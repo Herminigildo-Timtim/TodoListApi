@@ -1,11 +1,16 @@
-namespace TodoListApi.Models;
+using System;
+using System.ComponentModel.DataAnnotations;
 
-public record TodoItem
+namespace TodoListApi.Models
 {
-    public int Id { get; set; }
-    public string Title { get; set; } = string.Empty;
-    public bool IsCompleted { get; set; } = false;
-    public DateTime DateCreated { get; set; } = DateTime.UtcNow;
+    public record TodoItem
+    {
+        [Key] public int Id { get; set; }
 
+        [Required][StringLength(100)] public string Title { get; set; }
+
+        public bool IsCompleted { get; set; }
+
+        public DateTime DateCreated { get; set; } = DateTime.UtcNow;
+    }
 }
-
